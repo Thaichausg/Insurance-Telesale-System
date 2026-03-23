@@ -1,0 +1,22 @@
+# Koyeb Deployment Configuration for Backend API
+name: insurance-telesale-api
+services:
+  - name: api
+    type: web
+    source:
+      git:
+        repository: Thaichausg/Insurance-Telesale-System
+        branch: main
+        workdir: apps/api
+    builder: buildpack
+    env:
+      DATABASE_URL: $DATABASE_URL
+      JWT_SECRET: $JWT_SECRET
+      PORT: "8080"
+    ports:
+      - port: 8080
+        protocol: http
+    instance_type: nano
+    scaling:
+      min: 1
+      max: 1
