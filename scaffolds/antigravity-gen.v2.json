@@ -1,0 +1,43 @@
+{
+  "version": "2.0",
+  "name": "Antigravity Module Generator",
+  "architectures": {
+    "web": {
+      "framework": "Next.js",
+      "structure": "module-based",
+      "moduleTemplate": {
+        "directories": [
+          "components",
+          "hooks",
+          "services",
+          "types",
+          "stores",
+          "mocks"
+        ],
+        "files": {
+          "index.ts": "// Public API for this module\nexport * from './components';\nexport * from './types';"
+        }
+      }
+    },
+    "api": {
+      "framework": "NestJS",
+      "structure": "module-based",
+      "moduleTemplate": {
+        "directories": [
+          "controllers",
+          "services",
+          "dto",
+          "entities",
+          "interfaces"
+        ],
+        "files": {
+          "index.ts": "// Public API for this module\nexport * from './[name].module';\nexport * from './services/[name].service';"
+        }
+      }
+    }
+  },
+  "rules": {
+    "strictIsolation": true,
+    "noCrossImport": true
+  }
+}
